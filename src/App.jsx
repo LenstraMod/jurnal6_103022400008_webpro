@@ -1,3 +1,4 @@
+import { useState } from "react";
 import KartuMenu from "./components/KartuMenu";
 import Panel from "./components/Panel";
 
@@ -10,6 +11,21 @@ function App() {
   const username = "Abe";
   const jam = 9;
 
+  const dataAwal = [
+      {id: 1, judul: "Nasi Ayam Geprek", kategori: "Makanan", harga:"17.000"},
+      {id: 2, judul: "Mie Ayam", kategori: "Makanan", harga:"15.000"},
+      {id: 3, judul: "Es Teh", kategori: "Minuman", harga:"8.000"},
+      {id: 2, judul: "Bakso", kategori: "Makanan", harga:"12.000"},
+      {id: 3, judul: "Es Jeruk", kategori: "Minuman", harga:"8.000"}, 
+  ];
+  const [daftarMenu, setDaftarMenu] = useState(dataAwal);
+
+  const [pesanan, setPesanan] = useState({});
+
+  function deletes(props){
+
+  }
+
   return (
     <>
       <div className="">
@@ -19,7 +35,17 @@ function App() {
         <button disabled>Bayar</button>
       </div>
 
-      <Panel judul="Menu hari ini"/>
+      <Panel judul="Menu hari ini">
+        {daftarMenu.length === 0 ? (
+          <p>Semua menu habis</p>
+        ):(
+           <div className="daftar">
+              {daftarMenu.map((m) => (
+                <KartuMenu key={m.id} nama={m.nama} kategori={m.kategori} harga={m.harga} />
+              ))}
+           </div> 
+        )}
+      </Panel>
     </>
   )
 }

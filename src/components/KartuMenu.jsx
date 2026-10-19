@@ -22,6 +22,7 @@ function KartuMenu(props){
             <p>catatan Pesanan: </p>
             <input type="text" value={pesanan} onChange={(e) => setPesanan(e.target.value)} />
             <p>Catatan Pesanan : {pesanan}</p>
+            <button onClick={props.fungsi}>Hapus</button>
         </div>
     )
 }
